@@ -1,0 +1,43 @@
+<% include header %>
+
+    <form action="/" method="post" class="ui form">
+
+        <div class="field">
+
+            <label for="message">Message</label>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+
+        </div>
+        
+            <button class="ui blue labeled submit icon button">
+                <i class="icon edit"></i>Envoyer
+            </button> 
+        
+    </form>
+
+    <div class="ui comments">
+
+        <h3 class="ui dividing header">Commentaires</h3>
+        <% for (message of messages) { %>
+
+            <div class="comment">
+                <a href="/message/<%= message.id %>" class="avatar">
+                    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/94/94ab795119992e6e25354d384798d6738859249b.jpg" alt="avatar">
+                </a>
+                <div class="content">
+                    <div class="metadata">
+                        <div class="date">
+                            <%= message.created_at.fromNow() %>
+                        </div>
+                    </div>
+                    <div class="test">
+                        <%= message.content %>
+                    </div>
+                </div>
+            </div>
+
+
+            <% } %>
+    </div>
+
+<% include footer %>
